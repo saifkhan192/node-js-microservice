@@ -1,16 +1,10 @@
-'use strict';
 const path = require('path');
+const rootPath = path.join(__dirname, '..');
 
-// require('dotenv').config({ path: '../', debug: true });
-
-
-const defaults = {
-    root: path.join(__dirname, '..'),
-    mongoOptions: { keepAlive: 1, useNewUrlParser: true, useUnifiedTopology: true },
-};
-
-let envName = process.env.NODE_ENV || 'development';
-
-let envVars = require(defaults.root + '/env/' + envName);
-
-module.exports = Object.assign({}, envVars, defaults);
+if (process.env.NODE_ENV !== 'production') {
+  const envPath = `${rootPath}/.env.${process.env.NODE_ENV}`;
+  const result = require('dotenv').config({ path: envPath });
+  if (result.error) {
+    throw result.error
+  }
+}

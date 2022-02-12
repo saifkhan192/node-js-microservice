@@ -1,0 +1,78 @@
+{
+    "configurations": [
+        {
+            "name": "Node",
+            "type": "node",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9229,
+            
+            "stopOnEntry":true,
+            "trace":false,
+            "restart":true,
+
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/app",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**",
+            ],
+            "sourceMapPathOverrides": {
+                "${workspaceFolder}/*": "app/*",
+                "${workspaceFolder}/node_modules/": "app/node_modules/",
+            }
+        },
+        {
+            "name": "inspect",
+            "type": "node",
+            "protocol": "inspector",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9229,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/app",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**",
+            ],
+            "sourceMapPathOverrides": {
+                "${workspaceFolder}/*": "app/*"
+            }
+        },
+
+        {
+            "name": "test",
+            "type": "node",
+            "protocol": "inspector",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9230,
+            "stopOnEntry":false,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/app",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**",
+            ],
+            "sourceMapPathOverrides": {
+                "${workspaceFolder}/*": "app/*"
+            }
+        },
+
+        {
+            "name": "test-old",
+            "type": "node",
+            "protocol": "inspector",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9230,
+            "stopOnEntry":false,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/app",
+            "skipFiles": [
+                "${workspaceFolder}/node_modules/**",
+            ],
+            "sourceMapPathOverrides": {
+                "${workspaceFolder}/*": "app/*"
+            }
+        }
+          
+    ]
+  }

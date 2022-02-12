@@ -1,0 +1,25 @@
+{
+    "editor.codeActionsOnSave": {
+    "source.organizeImports": false,
+    "source.fixAll": true,
+    // For ESLint
+    "source.fixAll.eslint": true,
+    // For TSLint
+    "source.fixAll.tslint": true,
+    // For Stylelint
+    "source.fixAll.stylelint": true
+    },
+
+    "eslint.workingDirectories": ["./" ],
+
+    "eslint.options": {
+      "configFile": ".eslintrc.json"
+    },
+    "editor.formatOnSaveMode": "modifications",
+    "editor.formatOnPaste": true,
+    "eslint.format.enable": true,
+    "eslint.validate": [
+      "javascript"
+    ],
+    "extensions.ignoreRecommendations": true,
+}
