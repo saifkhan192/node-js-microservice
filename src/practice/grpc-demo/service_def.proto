@@ -1,0 +1,32 @@
+// what our services are
+// which packages they use
+// their input, output, and error types
+// .proto file also implements the RPC methods and services for the client
+// it defines the messages that the server-side and client-side interact with.
+syntax = "proto3";
+
+message Empty {}
+
+
+// data model called User
+message User {
+    string name = 1;
+    int32 age = 2;
+}
+
+// UserService service is a collection(s) of signatures of the different actions 
+// this service has available and what they return in the response.
+service UserService {
+    rpc GetUser (Empty) returns (User) {}
+}
+
+
+// Now that we have defined our services, the same configuration file can then be implemented using Go, Rust, Python, 
+// and Java without any required modifications!
+
+// The client can then use the profile to generate stubs and skeletons of the client and server sides
+// Now anyone can use that proto file to write the implementations of this service
+
+/**
+ * The header of this `Message`.
+ */

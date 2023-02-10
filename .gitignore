@@ -1,0 +1,10 @@
+.env
+/node_modules/
+docker/.mysql-data/
+docker/mongo/data/
+var/log/
+client/
+src/development.env
+src/firebase/firebase-credentials.json
+.vscode
+problem.js

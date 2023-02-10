@@ -1,0 +1,75 @@
+{
+    "name": "docker-node-express-mongodb-boilerplate",
+    "description": "A demo app illustrating the usage of express, mongoose, mysql, pug and other modules in nodejs",
+    "keywords": [
+        "docker",
+        "express",
+        "mongodb",
+        "mysql"
+    ],
+    "version": "1.0.0",
+    "private": false,
+    "author": "Saifullah Khan <saifkhan912@gmail.com> (https://github.com/saifkhan192/)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/saifkhan192/docker-node-express-mongodb-boilerplate.git"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=10.11.0"
+    },
+    "scripts": {
+        "dev": "export NODE_ENV=development && nodemon --inspect=0.0.0.0 src/server.js",
+        "debug": "export NODE_ENV=development && node --inspect=0.0.0.0 src/server.js",
+        "prod": "node src/server.js --env production",
+        "test": "export NODE_ENV=test && mocha --timeout 10000 --exit src/tests/*.specs.js",
+        "runtest": "node debug src/tests/*.specs.js",
+        "jest": "jest src/tests/*.specs.js",
+        "eslint": "eslint ./src/*.js",
+        "eslint:fix": "eslint --fix ./src/*.js",
+        "consumer": "export NODE_ENV=development && node --max-old-space-size=1024  src/consumer/index.js"
+    },
+    "dependencies": {
+        "@grpc/grpc-js": "^1.8.7",
+        "@grpc/proto-loader": "^0.7.4",
+        "aws-jwt-verify": "^3.4.0",
+        "axios": "^0.21.1",
+        "bcrypt": "^5.0.0",
+        "body-parser": "^1.19.0",
+        "chalk": "^4.1.1",
+        "co": "^4.6.0",
+        "compression": "^1.7.4",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "eventemitter2": "^6.4.9",
+        "express": "~4.17.1",
+        "fastest-validator": "^1.9.0",
+        "firebase-admin": "^11.5.0",
+        "js-yaml": "^3.14.1",
+        "jsonwebtoken": "^9.0.0",
+        "moment": "^2.29.4",
+        "moment-timezone": "^0.5.40",
+        "mongoose": "^5.11.15",
+        "morgan": "^1.10.0",
+        "mysql2": "^2.2.5",
+        "pg": "^8.9.0",
+        "pm2": "^4.5.6",
+        "pug": "^3.0.0",
+        "redis": "^3.1.2",
+        "sequelize": "^6.3.5",
+        "serve-favicon": "^2.5.0",
+        "sqs-consumer": "^6.2.1",
+        "winston": "^3.3.3"
+    },
+    "devDependencies": {
+        "axios-mock-adapter": "^1.21.2",
+        "eslint": "^8.33.0",
+        "express-list-endpoints": "^6.0.0",
+        "jest": "^26.6.3",
+        "mocha": "^10.2.0",
+        "nodemon": "^2.0.6",
+        "supertest": "*",
+        "table": "^6.8.1",
+        "tape": "^5.1.0"
+    }
+}

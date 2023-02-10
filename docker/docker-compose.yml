@@ -1,0 +1,73 @@
+version: '3.4'
+services:
+
+  express_app:
+    build:
+      context: ../
+      dockerfile: ./docker/DockerfileNode
+    image: express_app_image # 
+    container_name: express_app
+    ports: 
+      - 8080:8080 # express app
+      - 9229:9229 # vscode debugger
+      - 9230:9230 # debug tests
+    # env_file:
+      # - ../src/.env
+    volumes:
+      - ../:/app
+      - /app/node_modules # don't mount anything at this path
+      - ./bash_history.log:/root/.bash_history # container bash history
+    links:
+      - mongodb
+      - redis
+      - mysqldb
+    # command: sh -c "DEBUG=* npm run dev" # use this for development
+    command: sh -c "npm run dev" # use this for development
+    # command: sh -c "npm run pretest"
+    # command: sh -c "npm run test"
+    # command: sh -c "export NODE_ENV=development && nodemon --inspect=0.0.0.0 --ignore node_modules/ server.js"
+    # command: sh -c "export NODE_ENV=development && nodemon --inspect-brk=0.0.0.0 --ignore node_modules/ server.js"
+    # command: sh -c "export NODE_ENV=development NODE_DEBUG=module && node --inspect-brk=0.0.0.0 server.js"
+    # command: sh -c "export NODE_ENV=development && pm2-runtime src/server.js --name myapp --watch ./src/* --log pm2_myapp.log"
+    # command: sh -c "export NODE_ENV=development && pm2-runtime pm2-ecosystem.config.js" #working
+    
+    networks:
+      - frontend
+    tty: true # for colored console
+    environment:
+      - TERM=xterm-256color`
+
+  mongodb:
+    image: mongo:3.6
+    container_name: mongodb
+    command: mongod --noprealloc
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/data:/data/db
+    networks:
+      - frontend
+
+  redis:
+    image: redis
+    container_name: cache
+    expose:
+      - 6379
+    networks:
+      - frontend
+
+  mysqldb:
+    image: mysql:latest
+    container_name: mysqldb
+    volumes:
+      - "./.mysql-data/db:/var/lib/mysql"
+    # restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - frontend
+
+networks:
+  frontend:

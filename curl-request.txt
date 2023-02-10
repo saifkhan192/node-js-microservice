@@ -1,0 +1,19 @@
+curl --location --request POST 'http://localhost:8080/auth/signup' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name":"saif khan",
+    "email": "saif11@test.com",
+    "password":"123",
+    "role":"admin"
+}'
+
+curl --location --request POST 'http://localhost:8080/auth/signin' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email": "saif11@test.com",
+    "password":"123"
+}'
+
+
+curl --location --request GET 'http://localhost:8080/user/books' \
+--header 'Authorization: Bearer {accessToken}'

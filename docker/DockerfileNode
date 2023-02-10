@@ -1,0 +1,24 @@
+FROM node:12 as layer1
+RUN apt-get update && apt-get install bash
+
+
+FROM layer1 as layer2
+ENV PATH /app/node_modules/.bin:$PATH
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+
+
+FROM layer2 as layer3
+COPY . ./
+# express app
+EXPOSE 8080
+# debug port
+EXPOSE 9229 
+
+
+# debug tests
+EXPOSE 9230 
+
+# CMD ["pm2-runtime", "app.js"]
